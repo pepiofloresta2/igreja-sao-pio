@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colabore com a Igreja São Pio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      background: white;
+    }
+
+    .imagem {
+      width: 100%;
+      height: auto;
+    }
+
+    .info {
+      padding: 15px;
+    }
+
+    .texto-extra {
+      font-size: 14px;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .botao {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .copiar {
+      background-color: #d59942;
+      color: white;
+    }
+
+    .copiar:hover {
+      background-color: #c4872f;
+    }
+
+    .compartilhar {
+      background-color: #555;
+      color: white;
+    }
+
+    .compartilhar:hover {
+      background-color: #333;
+    }
+
+    .mensagem {
+      display: none;
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+      .botao {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- SUA IMAGEM -->
+  <img src="sua-imagem.jpg" class="imagem" alt="Igreja São Pio">
+
+  <div class="info">
+
+    <!-- TEXTO ADICIONAL -->
+    <div class="texto-extra">
+      Paróquia Nossa Senhora de Guadalupe<br>
+      Diocese de Criciúma - SC
+    </div>
+
+    <!-- BOTÃO COPIAR -->
+    <button class="botao copiar" onclick="copiarPix()">
+      COPIAR PIX
+    </button>
+
+    <!-- BOTÃO COMPARTILHAR -->
+    <button class="botao compartilhar" onclick="compartilhar()">
+      COMPARTILHAR
+    </button>
+
+    <!-- MENSAGEM -->
+    <div id="mensagem" class="mensagem">
+      PIX COPIADO!
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  const chavePix = `00020126470014br.gov.bcb.pix0125pepio.floresta2@gmail.com5204000053039865802BR5919DIOCESE_DE_CRICIUMA6008Criciuma610988805-61062160512Igrejasaopio63040328`;
+
+  function copiarPix() {
+    navigator.clipboard.writeText(chavePix).then(() => {
+      const msg = document.getElementById("mensagem");
+      msg.style.display = "block";
+
+      setTimeout(() => {
+        msg.style.display = "none";
+      }, 2000);
+    });
+  }
+
+  function compartilhar() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Colabore com a Igreja São Pio',
+        text: 'Ajude na construção da Igreja São Pio 🙏',
+        url: window.location.href
+      });
+    } else {
+      alert("Compartilhamento não suportado neste navegador.");
+    }
+  }
+</script>
+
+</body>
+</html>
