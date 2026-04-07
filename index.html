@@ -1,146 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colabore com a Igreja São Pio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colabore com a Igreja São Pio</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      display: flex;
-      justify-content: center;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(#f5e6c8, #fff);
+    display: flex;
+    justify-content: center;
+  }
 
-    .container {
-      max-width: 500px;
-      width: 100%;
-      text-align: center;
-      background: white;
-    }
+  .container {
+    max-width: 520px;
+    width: 100%;
+  }
 
-    .imagem {
-      width: 100%;
-      height: auto;
-    }
+  img {
+    width: 100%;
+    display: block;
+  }
 
-    .info {
-      padding: 15px;
-    }
+  /* BOTÕES */
+  .fab {
+    position: fixed;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+  }
 
-    .texto-extra {
-      font-size: 14px;
-      margin-bottom: 15px;
-      color: #444;
-    }
+  .fab:hover {
+    transform: scale(1.05);
+  }
 
-    .botao {
-      display: block;
-      width: 90%;
-      margin: 10px auto;
-      padding: 15px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+  .fab svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+  }
 
-    .copiar {
-      background-color: #d59942;
-      color: white;
-    }
+  .copiar {
+    bottom: 90px;
+    background: #d59942;
+  }
 
-    .copiar:hover {
-      background-color: #c4872f;
-    }
+  .compartilhar {
+    bottom: 20px;
+    background: #25D366;
+  }
 
-    .compartilhar {
-      background-color: #555;
-      color: white;
-    }
+  /* MENSAGEM */
+  .mensagem {
+    position: fixed;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2ecc71;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    opacity: 0;
+    transition: 0.3s;
+  }
 
-    .compartilhar:hover {
-      background-color: #333;
-    }
-
-    .mensagem {
-      display: none;
-      margin-top: 10px;
-      color: green;
-      font-weight: bold;
-    }
-
-    @media (max-width: 480px) {
-      .botao {
-        font-size: 14px;
-        padding: 12px;
-      }
-    }
-  </style>
+  .mensagem.show {
+    opacity: 1;
+  }
+</style>
 </head>
+
 <body>
 
 <div class="container">
+  <img src="sua-imagem.jpg">
+</div>
 
-  <!-- SUA IMAGEM -->
-  <img src="sua-imagem.jpg" class="imagem" alt="Igreja São Pio">
+<!-- BOTÃO COPIAR -->
+<button class="fab copiar" onclick="copiarPix()">
+  <!-- ÍCONE COPY -->
+  <svg viewBox="0 0 24 24">
+    <path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/>
+  </svg>
+  COPIAR PIX
+</button>
 
-  <div class="info">
+<!-- BOTÃO COMPARTILHAR -->
+<button class="fab compartilhar" onclick="compartilhar()">
+  <!-- ÍCONE SHARE -->
+  <svg viewBox="0 0 24 24">
+    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a2.5 2.5 0 0 0 0-1.39l7-4.11A2.99 2.99 0 1 0 14 5a2.9 2.9 0 0 0 .06.59l-7 4.11a3 3 0 1 0 0 4.6l7.05 4.14c-.04.2-.07.41-.07.63a3 3 0 1 0 3-2.99z"/>
+  </svg>
+  COMPARTILHAR
+</button>
 
-    <!-- TEXTO ADICIONAL -->
-    <div class="texto-extra">
-      Paróquia Nossa Senhora de Guadalupe<br>
-      Diocese de Criciúma - SC
-    </div>
-
-    <!-- BOTÃO COPIAR -->
-    <button class="botao copiar" onclick="copiarPix()">
-      COPIAR PIX
-    </button>
-
-    <!-- BOTÃO COMPARTILHAR -->
-    <button class="botao compartilhar" onclick="compartilhar()">
-      COMPARTILHAR
-    </button>
-
-    <!-- MENSAGEM -->
-    <div id="mensagem" class="mensagem">
-      PIX COPIADO!
-    </div>
-
-  </div>
-
+<!-- MENSAGEM -->
+<div id="mensagem" class="mensagem">
+  PIX COPIADO!
 </div>
 
 <script>
-  const chavePix = `00020126470014br.gov.bcb.pix0125pepio.floresta2@gmail.com5204000053039865802BR5919DIOCESE_DE_CRICIUMA6008Criciuma610988805-61062160512Igrejasaopio63040328`;
+const chavePix = `00020126470014br.gov.bcb.pix0125pepio.floresta2@gmail.com5204000053039865802BR5919DIOCESE_DE_CRICIUMA6008Criciuma610988805-61062160512Igrejasaopio63040328`;
 
-  function copiarPix() {
-    navigator.clipboard.writeText(chavePix).then(() => {
-      const msg = document.getElementById("mensagem");
-      msg.style.display = "block";
+function copiarPix() {
+  navigator.clipboard.writeText(chavePix).then(() => {
+    const msg = document.getElementById("mensagem");
+    msg.classList.add("show");
 
-      setTimeout(() => {
-        msg.style.display = "none";
-      }, 2000);
+    setTimeout(() => {
+      msg.classList.remove("show");
+    }, 2000);
+  });
+}
+
+function compartilhar() {
+  const url = window.location.href;
+  const texto = "Colabore com a construção da Igreja São Pio 🙏";
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Colabore com a Igreja São Pio',
+      text: texto,
+      url: url
     });
+  } else {
+    // fallback WhatsApp com link
+    const mensagem = encodeURIComponent(texto + "\n\n" + url);
+    window.open(`https://wa.me/?text=${mensagem}`, "_blank");
   }
-
-  function compartilhar() {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Colabore com a Igreja São Pio',
-        text: 'Ajude na construção da Igreja São Pio 🙏',
-        url: window.location.href
-      });
-    } else {
-      alert("Compartilhamento não suportado neste navegador.");
-    }
-  }
+}
 </script>
 
 </body>
